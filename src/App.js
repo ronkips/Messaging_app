@@ -1,10 +1,8 @@
 import "./App.css";
 import { ChatEngine } from "react-chat-engine";
 import ChatFeed from "./Components/ChatFeed";
-import * as dotenv from "dotenv";
-dotenv.config();
-const projectID = process.env.projectId;
-const userSecret = process.env.userSecret;
+const projectID = process.env.REACT_APP_PROJECTID;
+const userSecret = process.env.REACT_APP_USERSECRET;
 
 function App() {
   return (
