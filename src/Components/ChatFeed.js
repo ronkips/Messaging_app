@@ -6,6 +6,22 @@ const ChatFeed = (props) => {
   const { chats, activeChat, userName, messages } = props;
   const chat = chats && chats[activeChat];
 
+  const renderReadReceipts = (message, myMeso) =>
+    chat.people.map(
+      (person, index) =>
+        person.last_read === message.id && (
+          <div
+            key={`read_${index}`}
+            className="read-receipt"
+            style={{
+              float: myMeso ? "right" : "left",
+              backgroundImage:
+                person.person.avatar && `url(${person.person.avatar})`
+            }}
+          />
+        )
+    );
+
   //render
   const renderMessage = () => {
     const keys = Object.keys(messages);
@@ -33,7 +49,9 @@ const ChatFeed = (props) => {
               marginLeft: myMeso ? "18px" : "0px",
               marginRight: myMeso ? "0px" : "68px"
             }}
-          ></div>
+          >
+            {renderReadReceipts(message, myMeso)}
+          </div>
         </div>
       );
     });
