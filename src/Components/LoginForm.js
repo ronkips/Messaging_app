@@ -29,7 +29,7 @@ const LoginForm = () => {
       setError("");
     } catch (error) {
       // error => try with new username
-      setError("Oops, Incorrrect credentials");
+      setError(alert("Oops, Incorrrect credentials"));
     }
   };
 
@@ -42,11 +42,17 @@ const LoginForm = () => {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            className="input"
+            placeholder="Username"
+            required
           />
           <input
             type="password"
             value={password}
             onChange={(e) => setPasssword(e.target.value)}
+            className="input"
+            placeholder="Password"
+            required
           />
           <div align="center">
             <button type="submit" className="button">
