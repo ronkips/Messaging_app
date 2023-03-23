@@ -4,6 +4,7 @@ import axios from "axios";
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPasssword] = useState("");
+  const [error, setError] = useState("");
 
   const projectID = process.env.REACT_APP_PROJECTID;
 
@@ -25,8 +26,10 @@ const LoginForm = () => {
       localStorage.setItem("password", password);
 
       window.location.reload();
+      setError("");
     } catch (error) {
       // error => try with new username
+      setError("Oops, Incorrrect credentials");
     }
   };
 
@@ -51,6 +54,7 @@ const LoginForm = () => {
             </button>
           </div>
         </form>
+        <h1>{error}</h1>
       </div>
     </div>
   );
